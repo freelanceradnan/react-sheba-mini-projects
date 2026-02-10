@@ -1,0 +1,12 @@
+import {createContext } from "react";
+import { useCredential } from "../hooks/useCredential";
+
+export const AuthContext=createContext()
+export const AuthProvider=({children})=>{
+const allContexts=useCredential()
+return(
+    <AuthContext.Provider value={allContexts}>
+        {children}
+    </AuthContext.Provider>
+)
+}
