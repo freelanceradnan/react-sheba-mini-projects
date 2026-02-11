@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import './App.css'
 import { AuthProvider } from './contexts/AuthProvider'
 import { Route, Routes } from 'react-router-dom'
 import Home from './Pages/Home/Home'
@@ -9,7 +9,7 @@ import Dashboard from './Pages/Dashboard/Dashboard'
 import { PrivateOutlet } from './Components/PrivateOutlet/PrivateOutlet'
 import Errorpage from './Components/NotFound/NotFound'
 
-// import './App.css'
+
 
 function App() {
 
