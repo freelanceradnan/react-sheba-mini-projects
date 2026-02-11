@@ -10,6 +10,7 @@ function Home() {
         <div>
             <Navbar/>
             {user.gmail?`welcome ${user.name}`:<><h2>Homepage</h2></>}
+            
         </div>
     );
 }
