@@ -9,7 +9,7 @@ const HeroSection = () => {
                     <h2 className="text-white text-center text-2xl font-bold">One Stop Solution for all of your Sevices</h2>
                 </div>
                 <div className="my-2 mx-auto px-2 md:w-2/3 lg:w-1/2 xl:w-1/3 w-full">
-                    <input type="search" placeholder='Search Now...' className='p-3 rounded w-full focus:outline-none border-sky-600 border hover:bg-sky-800'/>
+                    <input type="search" placeholder='Search Now...' className='p-3 rounded w-full focus:outline-none border-sky-600 border hover:bg-sky-800 bg-white'/>
                 </div>
             </div>
         </div>

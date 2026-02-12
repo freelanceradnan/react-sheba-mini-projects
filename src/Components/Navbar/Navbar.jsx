@@ -20,7 +20,7 @@ const Navbar = () => {
             <NavLink to="/services" className={({isActive})=>isActive?'px-3 py-1 mx-2 text-white border-sky-800 bg-sky-800 rounded-md':'px-3 py-1 mx-2 text-black border hover:bg-sky-800 hover:text-white rounded-md'}>Services</NavLink>
         </div>
          <div className="ml-auto">
-            <NavLink to="/services" className={({isActive})=>isActive?'px-3 py-1 mx-2 text-white border-sky-800 bg-sky-800 rounded-md':'px-3 py-1 mx-2 text-black border hover:bg-sky-800 hover:text-white rounded-md'}>Stuff</NavLink>
+            <NavLink to="/stuffs" className={({isActive})=>isActive?'px-3 py-1 mx-2 text-white border-sky-800 bg-sky-800 rounded-md':'px-3 py-1 mx-2 text-black border hover:bg-sky-800 hover:text-white rounded-md'}>Stuff</NavLink>
         
         </div>
         {user.email?

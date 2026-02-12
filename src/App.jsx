@@ -8,6 +8,8 @@ import Signup from './Pages/Singup/Signup'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import { PrivateOutlet } from './Components/PrivateOutlet/PrivateOutlet'
 import Errorpage from './Components/NotFound/NotFound'
+import Services from './Pages/Services/Services'
+import Staffs from './Pages/Staffs/Staffs'
 
 
 
@@ -23,6 +25,8 @@ function App() {
     <Route path="/home" element={<Home/>}/>
     <Route path="/login" element={<Login/>}/>
     <Route path="/signup" element={<Signup/>}/>
+    <Route path="/services" element={<Services/>}/>
+    <Route path="/stuffs" element={<Staffs/>}/>
     <Route path="*" element={<Errorpage/>}/>
     
     <Route path="/" element={<PrivateOutlet/>}>

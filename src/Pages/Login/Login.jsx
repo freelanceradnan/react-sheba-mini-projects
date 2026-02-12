@@ -28,19 +28,40 @@ function Login() {
   
 
 const processLogin = (formData) => {
-   
-    const tempUser = userData.find(u => u.gmail === formData.gmail && u.password === formData.password)
-   
-    if (tempUser) {
-        setUser(tempUser);
-        localStorage.setItem('uId', tempUser.id);
-        setLoginError("");
-        alert('form submitted')
+   setLoginError("")
+    let btn=document.getElementById('form-btn')
+    btn.disabled=true
+    btn.innerHTML='Processing....'
+    // btn.style.backgroundColor="gray"
+  
+   const fetchData=async()=>{
+     try {
+        
+        const response=await fetch(`https://sheba-xyz-backend.onrender.com/login`,{
+        method:"POST",
+        headers:{'Content-Type':"application/json"},
+        body:JSON.stringify({
+            email:formData.gmail,
+            password:formData.password
+        })
+        })
+        
+        const result=await response.json()
+        if(result.status){
+        console.log(result)
+        }
+        else{
+            setLoginError(result.message)
+        }
         reset()
-    } else {
-        setLoginError("User Email or Password not Match");
-    }
+        btn.disabled=false
+    btn.innerHTML='Submit'
+     } catch (error) {
+        console.log(error)
+     }
     
+   }
+    fetchData()
 };
     return (
         <div>
@@ -56,9 +77,10 @@ const processLogin = (formData) => {
     
 
 
-      <input type="submit" value={"Login"} className="rounded-sm w-full bg-emerald-600 py-2 text-white"/>
+      <button type="submit" className="rounded-sm w-full bg-emerald-600 py-2 text-white" id="form-btn">Login</button>
+      <p className='text-red-400'>{loginError}</p>
     </form>
-    <p className='text-red-400'>{loginError}</p>
+    
         </div>
     );
 }

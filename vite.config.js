@@ -7,8 +7,8 @@ export default defineConfig({
     container:false
   },
   plugins: [ tailwindcss(),react(),
-  function({addComponents}){
-    addComponents({
+  function(){
+    ({
       '.container':{
         maxWidth:'100%',
         '@screen sm':{
