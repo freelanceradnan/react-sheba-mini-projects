@@ -1,35 +1,32 @@
 import { useEffect, useState } from "react";
-import userDetails from '../Data/userData.json'
+
 
 export const useCredential = () => {
-    const [user, setUser] = useState({});
-    const id = localStorage.getItem('uId');
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true); // Add this!
+  const id = localStorage.getItem('uId');
 
-    const userData = () => {
-        const fetchData = async () => {
-            try {
-               
-                const tempUser = userDetails.find(user => user.id == id) || {};
-                setUser(tempUser);
-            } catch (error) {
-                console.log(error); 
-            }
-        };
-        fetchData(); 
-    };
-
-    useEffect(() => {
-        if (id) {
-            userData();
-        } else {
-            setUser({});
+  useEffect(() => {
+    const fetchData = async () => {
+      if (id) {
+        try {
+          const response = await fetch(`https://sheba-xyz-backend.onrender.com/user/${id}`);
+          const result = await response.json();
+          if (result.status) {
+            setUser(result.user);
+          }
+        } catch (err) {
+          console.error(err);
         }
-    }, [id]);
-
-    const logout = () => {
-        localStorage.removeItem('uId');
-        setUser({});
+      }
+      setLoading(false); 
     };
+    fetchData();
+  }, [id]);
+  const logout=()=>{
+    localStorage.removeItem('uId')
+    setUser({})
+  }
 
-    return { user, setUser, logout };
+  return { user, setUser, loading,logout}; 
 };

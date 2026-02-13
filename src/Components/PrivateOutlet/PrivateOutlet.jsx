@@ -6,6 +6,6 @@ export const PrivateOutlet=()=>{
     const {user}=useAuth()
     const location=useLocation()
 
-    return user.gmail? <Outlet/>:
+    return user?.email || user?.gmail ? <Outlet/>:
     <Navigate to="/login" state={{from: location }} replace/>
 }
