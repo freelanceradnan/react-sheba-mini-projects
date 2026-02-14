@@ -3,7 +3,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import { useForm } from "react-hook-form";
 import userData from "../../Data/userData.json";
 
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 function Login() {
@@ -50,7 +50,7 @@ function Login() {
           setUser(result.user)
           setLoginError("");
           localStorage.setItem("uId", result.user._id);
-          result.user.role === "user" && navigate("/services");
+          result.user.role === "user" && navigate("/");
           result.user.role === "admin" && navigate("/admin");
         } else {
           setLoginError(result.message);
@@ -102,6 +102,7 @@ function Login() {
           Login
         </button>
         <p className="text-red-400">{loginError}</p>
+        <p className="text-sky-950 my-2">Don't have an account? <Link to="/signup" className="underline">Register as user</Link></p>
       </form>
     </div>
   );
