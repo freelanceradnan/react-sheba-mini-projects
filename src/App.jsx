@@ -10,6 +10,7 @@ import { PrivateOutlet } from './Components/PrivateOutlet/PrivateOutlet'
 import Errorpage from './Components/NotFound/NotFound'
 import Services from './Pages/Services/Services'
 import Staffs from './Pages/Staffs/Staffs'
+import ServiceDetails from './Pages/Services/ServiceDetails'
 
 
 
@@ -26,6 +27,7 @@ function App() {
     <Route path="/login" element={<Login/>}/>
     <Route path="/signup" element={<Signup/>}/>
     <Route path="/services" element={<Services/>}/>
+    <Route path="/service-details/:id" element={<ServiceDetails/>}/>
     <Route path="/stuffs" element={<Staffs/>}/>
     <Route path="*" element={<Errorpage/>}/>
     
