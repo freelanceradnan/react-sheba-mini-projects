@@ -1,9 +1,9 @@
 import React from 'react';
 
-const StaffminiCart = () => {
+const StaffminiCart = ({staff}) => {
     return (
         <div>
-          minicart  
+           {staff.name} 
         </div>
     );
 };
