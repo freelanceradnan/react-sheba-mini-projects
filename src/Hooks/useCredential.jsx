@@ -8,7 +8,8 @@ export const useCredential = () => {
   const [services,setServices]=useState([])
   const [service,setService]=useState([])
   const id = localStorage.getItem('uId');
-  const [staffs,setStaffs]=useState([])
+  const [staffs,setStaffs]=useState([]);
+  const [staff,setStaff]=useState({})
 //  get-categories
 useEffect(()=>{
 const fetchData=async()=>{
@@ -74,5 +75,5 @@ fetchData()
     setUser({})
   }
 
-  return { user, setUser, loading,logout,categories,services,setCategories,setServices,service,setService,staffs,setStaffs}; 
+  return { user, setUser, loading,logout,categories,services,setCategories,setServices,service,setService,staffs,setStaffs,staff,setStaff}; 
 };

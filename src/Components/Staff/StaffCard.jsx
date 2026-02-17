@@ -1,6 +1,10 @@
 import React from 'react';
+import useAuth from '../../Hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const StaffCard = ({staff}) => {
+    const {setStaff}=useAuth()
+    const navigate=useNavigate()
     return (
         <div className="bg-gray-50 border hover:border-sky-800 rounded shadow-md p-5">
         <div className="">
@@ -24,7 +28,7 @@ const StaffCard = ({staff}) => {
         :<> {staff.services.map(service=><p key={service} className='rounded-full mr-2 p-2 border border-gray-700'>{service}</p>)}</>    
         }
         </div>
-        <button className="bg-sky-800 hover:bg-sky-900 text-white py-2 p-5 mt-2 rounded-full text-sm flex">See Profile</button>
+        <button onClick={()=>{setStaff(staff);navigate(`/staff-details/${staff._id}`)}} className="bg-sky-800 hover:bg-sky-900 text-white py-2 p-5 mt-2 rounded-full text-sm flex">See Profile</button>
         </div>
     );
 };

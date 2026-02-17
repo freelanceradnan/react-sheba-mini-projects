@@ -11,6 +11,7 @@ import Errorpage from './Components/NotFound/NotFound'
 import Services from './Pages/Services/Services'
 import Staffs from './Pages/Staffs/Staffs'
 import ServiceDetails from './Pages/Services/ServiceDetails'
+import StaffDetails from './Pages/Staffs/StaffDetails'
 
 
 
@@ -29,6 +30,7 @@ function App() {
     <Route path="/services" element={<Services/>}/>
     <Route path="/service-details/:id" element={<ServiceDetails/>}/>
     <Route path="/stuffs" element={<Staffs/>}/>
+    <Route path="/staff-details/:id" element={<StaffDetails/>}/>
     <Route path="*" element={<Errorpage/>}/>
     
     <Route path="/" element={<PrivateOutlet/>}>
