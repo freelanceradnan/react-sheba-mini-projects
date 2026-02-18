@@ -10,6 +10,7 @@ export const useCredential = () => {
   const id = localStorage.getItem('uId');
   const [staffs,setStaffs]=useState([]);
   const [staff,setStaff]=useState({})
+  const [slots,setSlots]=useState({})
 //  get-categories
 useEffect(()=>{
 const fetchData=async()=>{
@@ -52,6 +53,21 @@ const fetchData=async()=>{
 }
 fetchData()
 },[])
+//  get-slots
+useEffect(()=>{
+const fetchData=async()=>{
+  try{
+  const response=await fetch(`https://sheba-xyz-backend.onrender.com/slots`)
+  const result=await response.json()
+  result.status &&setSlots(result.slots)
+  
+  }
+  catch(err){
+    console.log(err)
+  }
+}
+fetchData()
+},[])
 //get-login/signup
   useEffect(() => {
     const fetchData = async () => {
@@ -75,5 +91,5 @@ fetchData()
     setUser({})
   }
 
-  return { user, setUser, loading,logout,categories,services,setCategories,setServices,service,setService,staffs,setStaffs,staff,setStaff}; 
+  return { user, setUser, loading,logout,categories,services,setCategories,setServices,service,setService,staffs,setStaffs,staff,setStaff,slots,setSlots}; 
 };

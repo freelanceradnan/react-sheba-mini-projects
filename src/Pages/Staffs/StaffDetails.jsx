@@ -11,12 +11,12 @@ const StaffDetails = () => {
   
     useEffect(()=>{
     if(staff){
-        console.log('fired')
+        // console.log('fired')
     const fetchData=async()=>{
     try{
     const response=await fetch(`https://sheba-xyz-backend.onrender.com/staff/${id}`)
     const result=await response.json()
-    console.log(result)
+    // console.log(result)
     if(result.status){
         setStaff(result.staff)
     }
@@ -33,14 +33,14 @@ const StaffDetails = () => {
 
    
     },[id,setStaff,staff.name])
-    const [toggle,setToggle]=useState(false)
-    const [tab,setTab]=useState('About')
-    const handlerTabChange=(tabName)=>{
-        if(tab!==tabName){
-            setToggle((curr)=>!curr);
-            setTab(tabName)
-        }
+   const [toggle,setToggle]=useState(false)
+   const [tab,setTab]=useState('About')
+   const handleTabChange=(tabName)=>{
+    if(tab!==tabName){
+    setToggle((curr)=>!curr)
+    setTab(tabName)
     }
+   }
 
     return (
         <div>
@@ -58,16 +58,17 @@ const StaffDetails = () => {
            
         </div>
          <div className="mt-5 pt-5 md:pt-0">
-                <button
-                onClick={()=>handlerTabChange(`About`)}
-                 className={`text-lg font-bold tracking-wide border-b-2 p-2 mx-5 ${toggle?`hover:border-sky-800`:``}${toggle? `text-sky-950`:`text-sky-800`}`}>About</button>
-                <button 
-                onClick={()=>handlerTabChange(`Review`)}
-                className={`text-lg font-bold tracking-wide border-b-2 p-2 mx-5 ${toggle?`hover:border-sky-950`:``} ${toggle?`text-sky-800`:`text-sky-950`}`}>Rating & Reviews</button>
+            <button 
+            onClick={()=>handleTabChange('About')}
+            className={`text-lg font-bold tracking-wide ${toggle?`text-sky-900`:`text-sky-500`}`}>About</button>
+            <button 
+            onClick={()=>handleTabChange('Review')}
+            className={`text-lg font-bold tracking-wide ${toggle?`text-sky-500`:`text-sky-900`} pl-2`} >Review</button>
             </div>
-   {staff.name && tab==='About' && <StaffAbout staff={staff}/>}
-    {staff.name && tab==='Review' && <StaffReview staff={staff}/>}
+   
         </div>
+        {staff.name && tab===`About` &&<StaffAbout/>}
+        {staff.name && tab===`Review` &&<StaffReview/>}
         </div>
     );
 };
